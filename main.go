@@ -24,7 +24,7 @@ func main() {
 	// gin.SetMode()
 	gin.SetMode(setting.ServerSetting.RunMode)
 	router := routers.InitRouter()
-	listen := fmt.Sprintf("localhost:%d", setting.ServerSetting.HttpPort)
+	listen := fmt.Sprintf(":%d", setting.ServerSetting.HttpPort)
 	logging.Info("start listen on: ", listen)
 
 	server := &http.Server{
