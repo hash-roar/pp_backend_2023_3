@@ -60,7 +60,8 @@ func GetBlockWordsWithoutRepetition(mid string) ([]BlockWordsInfo, error) {
 		}
 	}
 	for _, aword := range all_words {
-		if _, ok := filter[aword.Shield]; !ok {
+		_, ok := filter[aword.Shield]
+		if !ok && aword.Visible {
 			filter[aword.Shield] = BlockWordsInfo{
 				Mid:    aword.Mid,
 				Shield: aword.Shield,

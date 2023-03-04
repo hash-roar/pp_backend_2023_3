@@ -18,7 +18,7 @@ func JctAuth() gin.HandlerFunc {
 		if err != nil || !authservice.CheckAuthWithHostname(mid, crypto, hostname) {
 			c.JSON(http.StatusOK, gin.H{
 				"code": enums.ERROR_AUTH_FAILED,
-				"msg":  "",
+				"msg":  "认证错误",
 			})
 			c.Abort()
 			return

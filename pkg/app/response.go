@@ -21,7 +21,7 @@ func (g *Gin) Response(httpCode, errCode int, data interface{}) {
 	g.C.JSON(httpCode, Response{
 		Code: errCode,
 		Msg:  enums.GetMsg(errCode),
-		// Data: data,
+		Data: data,
 	})
 	return
 }

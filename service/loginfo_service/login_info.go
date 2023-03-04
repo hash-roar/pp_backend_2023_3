@@ -1,6 +1,8 @@
 package loginfoservice
 
-import "pp-bakcend/models"
+import (
+	"pp-bakcend/models"
+)
 
 type EquipmentInfo struct {
 	Version  string
@@ -21,14 +23,14 @@ func GetAllLoginInfo() ([]LoginInfoObj, error) {
 		return nil, err
 	}
 	for _, user := range users {
-		userEquipments, err := models.GetAllEquipmentsByHostname(user.Equipments)
+		userEquipments, err := models.GetAllEquipmentsByMid(user.Mid)
 		if err != nil {
 			return nil, err
 		}
-		result := make([]EquipmentInfo, len(userEquipments))
+		result := make([]EquipmentInfo, 0, len(userEquipments))
 		for _, v := range userEquipments {
 			result = append(result, EquipmentInfo{
-				Version:  v.Hostname,
+				Version:  v.Version,
 				Hostname: v.Hostname,
 			})
 		}
@@ -39,7 +41,6 @@ func GetAllLoginInfo() ([]LoginInfoObj, error) {
 			Equipment: result,
 		})
 	}
-
 	return loginfos, nil
 
 }

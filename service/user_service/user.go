@@ -4,11 +4,11 @@ import (
 	"pp-bakcend/models"
 )
 
-func Update(user *models.User) error {
+func Update(user *models.Users) error {
 	return models.UpdateUser(user)
 }
 
-func CreateIfNotExist(user *models.User) error {
+func CreateIfNotExist(user *models.Users) error {
 
 	findUser, err := models.GetUserByMid(user.Mid)
 	if err != nil {

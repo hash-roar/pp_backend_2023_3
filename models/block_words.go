@@ -43,10 +43,16 @@ type BlockWordsInfo struct {
 
 func GetAllBlockWordsInfo() ([]BlockWordsInfo, error) {
 	var infos []BlockWordsInfo
-	result := db.Raw("select u.mid,u.name,u.avatar,b.word as shield,b.handle,b.visible from user u left join blocks_words b on u.mid=b.mid").Scan(&infos)
+	result := db.Raw("select u.mid,u.name,u.avatar,b.word as shield,b.handle,b.visible from users u left join block_words b on u.mid=b.mid").Scan(&infos)
 	return infos, result.Error
 }
 
 func SetWordVisibility(mid string, word string, visible bool) error {
 	return db.Model(&BlockWords{}).Where("mid = ? AND word = ?", mid, word).Update("visible", visible).Error
+}
+
+func GetUserBlockWords(mid string) ([]BlockWords, error) {
+	var words []BlockWords
+	result := db.Model(&BlockWords{}).Where("mid = ?", mid).Find(&words)
+	return words, result.Error
 }

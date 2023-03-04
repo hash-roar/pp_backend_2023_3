@@ -28,6 +28,6 @@ func Setup() {
 	db.DB().SetMaxOpenConns(100)
 
 	db.AutoMigrate(&Equipment{})
-	db.AutoMigrate(&User{})
+	db.AutoMigrate(&Users{})
 	db.AutoMigrate(&BlockWords{})
 }

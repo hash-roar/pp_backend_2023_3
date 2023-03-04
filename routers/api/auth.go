@@ -28,7 +28,7 @@ func AppLogin(c *gin.Context) {
 		logging.Info(err)
 		return
 	}
-	user := models.User{}
+	user := models.Users{}
 	user.Mid, err = c.Cookie("mid")
 	cryptStr, err := c.Cookie("crypto")
 	hostname, err := c.Cookie("hostname")
@@ -43,9 +43,6 @@ func AppLogin(c *gin.Context) {
 
 	// if no user ,create
 	userservice.CreateIfNotExist(&user)
-
-	logging.Debug(form)
-	logging.Debug(user.Mid, cryptStr, hostname, version)
 
 	if authservice.CheckAuth(user.Mid, hostname, form.Jct, cryptStr, version) != true {
 		App.Response(200, enums.ERROR_AUTH_FAILED, "")

@@ -1,13 +1,11 @@
 package models
 
 import (
-	"pp-bakcend/pkg/logging"
-
 	"github.com/jinzhu/gorm"
 	pq "github.com/lib/pq"
 )
 
-type User struct {
+type Users struct {
 	gorm.Model
 	Mid        string         `json:"mid" gorm:"mid"`
 	Password   string         `json:"password" gorm:"password"`
@@ -17,8 +15,8 @@ type User struct {
 	Equipments pq.StringArray `gorm:"type:varchar(255)[]"`
 }
 
-func GetUserByMid(mid string) (*User, error) {
-	var user User
+func GetUserByMid(mid string) (*Users, error) {
+	var user Users
 	result := db.Where("mid = $1", mid).First(&user)
 	if result.Error != nil && result.Error != gorm.ErrRecordNotFound {
 		return nil, result.Error
@@ -29,32 +27,31 @@ func GetUserByMid(mid string) (*User, error) {
 	return &user, nil
 }
 
-func CreateUser(user *User) error {
-	logging.Trace(user)
+func CreateUser(user *Users) error {
 	if err := db.Create(user).Error; err != nil {
 		return err
 	}
 	return nil
 }
 
-func UpdateUser(user *User) error {
-	return db.Model(&User{}).Where("mid = ?", user.Mid).Updates(user).Error
+func UpdateUser(user *Users) error {
+	return db.Model(&Users{}).Where("mid = ?", user.Mid).Updates(user).Error
 }
 
 func UpdateUserByMap(data map[string]interface{}) error {
-	if err := db.Model(&User{}).Updates(data).Error; err != nil {
+	if err := db.Model(&Users{}).Updates(data).Error; err != nil {
 		return err
 	}
 	return nil
 }
 
 func AddUserLoginTimes(mid string, times int) error {
-	return db.Model(&User{}).Where("mid = ?", mid).Update("total_login", gorm.Expr("total_login + ?", times)).Error
+	return db.Model(&Users{}).Where("mid = ?", mid).Update("total_login", gorm.Expr("total_login + ?", times)).Error
 
 }
 
-func GetAllUser() ([]User, error) {
-	var users []User
+func GetAllUser() ([]Users, error) {
+	var users []Users
 	result := db.Find(&users)
 	return users, result.Error
 }

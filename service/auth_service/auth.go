@@ -28,6 +28,7 @@ func CheckAuth(mid string, hostname string, jct string, encryptStr string, versi
 	}
 	if equipment == nil {
 		err = models.CreateEquipment(&models.Equipment{
+			Mid:      mid,
 			Hostname: hostname,
 			Version:  version,
 			Jct:      jct,

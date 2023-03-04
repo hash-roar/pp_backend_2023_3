@@ -8,6 +8,7 @@ import (
 
 type Equipment struct {
 	gorm.Model
+	Mid      string
 	Hostname string
 	Version  string
 	Jct      string
@@ -29,7 +30,6 @@ func GetEquipmentByHostname(hostname string) (*Equipment, error) {
 }
 
 func CreateEquipment(e *Equipment) error {
-	logging.Trace(e)
 	return db.Create(e).Error
 }
 
@@ -37,14 +37,8 @@ func UpdateEquipmentJct(hostname string, newJct string) error {
 	return db.Model(&Equipment{}).Where("hostname = ?", hostname).UpdateColumn("jct", newJct).Error
 }
 
-func GetAllEquipmentsByHostname(Hostnames []string) ([]Equipment, error) {
+func GetAllEquipmentsByMid(mid string) ([]Equipment, error) {
 	var equipments []Equipment
-	result := db.Where("hostname IN ?", Hostnames).Find(&equipments)
+	result := db.Where("mid = ?", mid).Find(&equipments)
 	return equipments, result.Error
-}
-
-func GetUserBlockWords(mid string) ([]BlockWords, error) {
-	var words []BlockWords
-	result := db.Model(&BlockWords{}).Where("mid = ?", mid).Find(&words)
-	return words, result.Error
 }

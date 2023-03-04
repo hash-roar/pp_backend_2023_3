@@ -17,7 +17,7 @@ func SessionAuth() gin.HandlerFunc {
 		if err != nil || !authservice.CheckSession(mid, session) {
 			ctx.JSON(http.StatusOK, gin.H{
 				"code": enums.ERROR_AUTH_FAILED,
-				"msg":  "",
+				"msg":  "认证错误",
 			})
 			ctx.Abort()
 			return
