@@ -1,8 +1,6 @@
 package models
 
 import (
-	"pp-bakcend/pkg/logging"
-
 	"github.com/jinzhu/gorm"
 )
 
@@ -17,7 +15,6 @@ type Equipment struct {
 func GetEquipmentByHostname(hostname string) (*Equipment, error) {
 	var equipment Equipment
 	result := db.Where("hostname = ?", hostname).First(&equipment)
-	logging.Trace(equipment)
 	if result.Error != nil {
 		if result.Error != gorm.ErrRecordNotFound {
 			return nil, result.Error

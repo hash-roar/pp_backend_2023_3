@@ -78,6 +78,7 @@ func SetWordVisibility(c *gin.Context) {
 		logging.Info(err)
 		return
 	}
+	App.Response(200, enums.SUCCESS, "")
 
 }
 

@@ -13,9 +13,10 @@ type BlockWords struct {
 func AddBlockWords(mid string, word string, handle string) error {
 
 	return db.Create(&BlockWords{
-		Mid:    mid,
-		Word:   word,
-		Handle: handle,
+		Mid:     mid,
+		Word:    word,
+		Handle:  handle,
+		Visible: true,
 	}).Error
 }
 
@@ -43,7 +44,7 @@ type BlockWordsInfo struct {
 
 func GetAllBlockWordsInfo() ([]BlockWordsInfo, error) {
 	var infos []BlockWordsInfo
-	result := db.Raw("select u.mid,u.name,u.avatar,b.word as shield,b.handle,b.visible from users u left join block_words b on u.mid=b.mid").Scan(&infos)
+	result := db.Raw("select u.mid,u.name,u.avatar,b.word as shield,b.handle,b.visible from users u inner join block_words b on u.mid=b.mid").Scan(&infos)
 	return infos, result.Error
 }
 
