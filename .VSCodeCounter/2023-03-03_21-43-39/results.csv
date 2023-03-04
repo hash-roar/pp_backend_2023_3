@@ -1,0 +1,34 @@
+"filename", "language", "Go", "Go Checksum File", "Go Module File", "Ini", "Log", "comment", "blank", "total"
+"d:\working\new\pp-project-2023-3\conf\app.ini", "Ini", 0, 0, 0, 27, 0, 0, 3, 30
+"d:\working\new\pp-project-2023-3\go.mod", "Go Module File", 0, 0, 33, 0, 0, 0, 4, 37
+"d:\working\new\pp-project-2023-3\go.sum", "Go Checksum File", 0, 120, 0, 0, 0, 0, 1, 121
+"d:\working\new\pp-project-2023-3\main.go", "Go", 31, 0, 0, 0, 0, 1, 8, 40
+"d:\working\new\pp-project-2023-3\middlewares\jct_auth.go", "Go", 23, 0, 0, 0, 0, 0, 7, 30
+"d:\working\new\pp-project-2023-3\middlewares\logger.go", "Go", 75, 0, 0, 0, 0, 11, 8, 94
+"d:\working\new\pp-project-2023-3\middlewares\session.go", "Go", 22, 0, 0, 0, 0, 0, 7, 29
+"d:\working\new\pp-project-2023-3\models\block_words.go", "Go", 42, 0, 0, 0, 0, 0, 11, 53
+"d:\working\new\pp-project-2023-3\models\equipment.go", "Go", 41, 0, 0, 0, 0, 0, 10, 51
+"d:\working\new\pp-project-2023-3\models\loginfo.go", "Go", 1, 0, 0, 0, 0, 0, 2, 3
+"d:\working\new\pp-project-2023-3\models\models.go", "Go", 28, 0, 0, 0, 0, 0, 6, 34
+"d:\working\new\pp-project-2023-3\models\user.go", "Go", 50, 0, 0, 0, 0, 0, 11, 61
+"d:\working\new\pp-project-2023-3\pkg\app\response.go", "Go", 20, 0, 0, 0, 0, 2, 6, 28
+"d:\working\new\pp-project-2023-3\pkg\enums\cache.go", "Go", 1, 0, 0, 0, 0, 0, 0, 1
+"d:\working\new\pp-project-2023-3\pkg\enums\code.go", "Go", 8, 0, 0, 0, 0, 0, 2, 10
+"d:\working\new\pp-project-2023-3\pkg\enums\msg.go", "Go", 15, 0, 0, 0, 0, 0, 4, 19
+"d:\working\new\pp-project-2023-3\pkg\file\file.go", "Go", 65, 0, 0, 0, 0, 8, 20, 93
+"d:\working\new\pp-project-2023-3\pkg\gredis\redis.go", "Go", 88, 0, 0, 0, 0, 5, 23, 116
+"d:\working\new\pp-project-2023-3\pkg\logging\file.go", "Go", 16, 0, 0, 0, 0, 2, 4, 22
+"d:\working\new\pp-project-2023-3\pkg\logging\log.go", "Go", 75, 0, 0, 0, 0, 8, 22, 105
+"d:\working\new\pp-project-2023-3\pkg\setting\setting.go", "Go", 62, 0, 0, 0, 0, 2, 16, 80
+"d:\working\new\pp-project-2023-3\routers\api\auth.go", "Go", 78, 0, 0, 0, 0, 2, 12, 92
+"d:\working\new\pp-project-2023-3\routers\api\v1\block_words.go", "Go", 100, 0, 0, 0, 0, 0, 18, 118
+"d:\working\new\pp-project-2023-3\routers\api\v1\login_info.go", "Go", 18, 0, 0, 0, 0, 0, 5, 23
+"d:\working\new\pp-project-2023-3\routers\router.go", "Go", 25, 0, 0, 0, 0, 0, 8, 33
+"d:\working\new\pp-project-2023-3\runtime\logs\log20230302.log", "Log", 0, 0, 0, 0, 22, 0, 1, 23
+"d:\working\new\pp-project-2023-3\runtime\logs\log20230303.log", "Log", 0, 0, 0, 0, 16, 0, 1, 17
+"d:\working\new\pp-project-2023-3\service\auth_service\auth.go", "Go", 56, 0, 0, 0, 0, 4, 11, 71
+"d:\working\new\pp-project-2023-3\service\block_words_service\block_words.go", "Go", 69, 0, 0, 0, 0, 0, 11, 80
+"d:\working\new\pp-project-2023-3\service\loginfo_service\login_info.go", "Go", 39, 0, 0, 0, 0, 0, 7, 46
+"d:\working\new\pp-project-2023-3\service\user_service\user.go", "Go", 17, 0, 0, 0, 0, 0, 5, 22
+"d:\working\new\pp-project-2023-3\utils\encypt.go", "Go", 12, 0, 0, 0, 0, 0, 4, 16
+"Total", "-", 1077, 120, 33, 27, 38, 45, 258, 1598
