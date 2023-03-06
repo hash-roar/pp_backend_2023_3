@@ -14,9 +14,10 @@ import (
 )
 
 type AppLoginForm struct {
-	Name   string `json:"name" `
-	Avatar string `json:"avatar"`
-	Jct    string `json:"jct"`
+	Name    string `json:"name" `
+	Avatar  string `json:"avatar"`
+	Jct     string `json:"jct"`
+	Version string
 }
 
 func AppLogin(c *gin.Context) {
@@ -32,7 +33,6 @@ func AppLogin(c *gin.Context) {
 	user.Mid, err = c.Cookie("mid")
 	cryptStr, err := c.Cookie("crypto")
 	hostname, err := c.Cookie("hostname")
-	version, err := c.Cookie("version")
 	if err != nil || user.Mid == "" {
 		logging.Error(err)
 		App.Response(200, enums.ERROR_AUTH_FAILED, "")
@@ -44,7 +44,7 @@ func AppLogin(c *gin.Context) {
 	// if no user ,create
 	userservice.CreateIfNotExist(&user)
 
-	if authservice.CheckAuth(user.Mid, hostname, form.Jct, cryptStr, version) != true {
+	if authservice.CheckAuth(user.Mid, hostname, form.Jct, cryptStr, form.Version) != true {
 		App.Response(200, enums.ERROR_AUTH_FAILED, "")
 		return
 	}
