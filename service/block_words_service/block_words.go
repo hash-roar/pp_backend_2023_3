@@ -22,9 +22,9 @@ func SetWordVisibility(mid string, word string, visible bool) error {
 }
 
 type BlockWordsInfo struct {
-	Mid    string
-	Shield string
-	Handle string
+	Mid    string `json:"mid"`
+	Shield string `json:"shield"`
+	Handle string `json:"handle"`
 }
 
 func GetUserBlockWords(mid string) ([]BlockWordsInfo, error) {

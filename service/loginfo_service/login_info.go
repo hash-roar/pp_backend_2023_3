@@ -5,15 +5,15 @@ import (
 )
 
 type EquipmentInfo struct {
-	Version  string
-	Hostname string
+	Version  string `json:"version"`
+	Hostname string `json:"hostname"`
 }
 
 type LoginInfoObj struct {
-	Mid       string
-	Name      string
-	Avatar    string
-	Equipment []EquipmentInfo
+	Mid       string          `json:"mid"`
+	Name      string          `json:"name"`
+	Avatar    string          `json:"avatar"`
+	Equipment []EquipmentInfo `json:"equipment"`
 }
 
 func GetAllLoginInfo() ([]LoginInfoObj, error) {

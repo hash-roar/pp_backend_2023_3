@@ -44,7 +44,7 @@ type BlockWordsInfo struct {
 
 func GetAllBlockWordsInfo() ([]BlockWordsInfo, error) {
 	var infos []BlockWordsInfo
-	result := db.Raw("select u.mid,u.name,u.avatar,b.word as shield,b.handle,b.visible from users u inner join block_words b on u.mid=b.mid").Scan(&infos)
+	result := db.Raw("select u.mid,u.name,u.avatar,b.word as shield,b.handle,b.visible from users u inner join block_words b on u.mid=b.mid where b.deleted_at is  null").Scan(&infos)
 	return infos, result.Error
 }
 
