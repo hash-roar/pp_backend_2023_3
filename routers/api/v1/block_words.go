@@ -10,9 +10,9 @@ import (
 )
 
 type HandleBlockWordsForm struct {
-	Shield    string
-	Handle    string
-	Operation bool // true: add or update
+	Shield    string `json:"shield" binding:"required"`
+	Handle    string `json:"handle" binding:"required"`
+	Operation bool   `json:"operation" binding:"required"` // true: add or update
 }
 
 func HandleBlockWords(c *gin.Context) {
@@ -64,9 +64,9 @@ func GetAllBlockWords(c *gin.Context) {
 }
 
 type SetWordVisibilityForm struct {
-	Mid     string
-	Shield  string
-	Visible bool
+	Mid     string `json:"mid" binding:"required"`
+	Shield  string `json:"shield" binding:"required"`
+	Visible bool   `json:"visible" binding:"required"`
 }
 
 func SetWordVisibility(c *gin.Context) {

@@ -14,10 +14,10 @@ import (
 )
 
 type AppLoginForm struct {
-	Name    string `json:"name" `
-	Avatar  string `json:"avatar"`
-	Jct     string `json:"jct"`
-	Version string
+	Name    string `json:"name" binding:"required" `
+	Avatar  string `json:"avatar" binding:"required"`
+	Jct     string `json:"jct" binding:"required"`
+	Version string `json:"version" binding:"required"`
 }
 
 func AppLogin(c *gin.Context) {
@@ -60,7 +60,7 @@ func AppLogin(c *gin.Context) {
 }
 
 type BrowserLoginForm struct {
-	Password string `json:"password"`
+	Password string `json:"password" binding:"required"`
 }
 
 func BrowserLogin(c *gin.Context) {
