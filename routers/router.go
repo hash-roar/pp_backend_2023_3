@@ -17,8 +17,8 @@ func InitRouter() *gin.Engine {
 
 	netToServerRouter := r.Group("net").Use(middlewares.SessionAuth())
 	{
-		netToServerRouter.GET("loginfo", v1.GetAllLoginInfo)
-		netToServerRouter.GET("shield", v1.GetAllBlockWords)
+		netToServerRouter.POST("loginfo", v1.GetAllLoginInfo)
+		netToServerRouter.POST("shield", v1.GetAllBlockWords)
 		netToServerRouter.POST("set-visible", v1.SetWordVisibility)
 	}
 
