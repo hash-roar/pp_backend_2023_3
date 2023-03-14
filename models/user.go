@@ -1,6 +1,8 @@
 package models
 
 import (
+	"time"
+
 	"github.com/jinzhu/gorm"
 	pq "github.com/lib/pq"
 )
@@ -46,7 +48,7 @@ func UpdateUserByMap(data map[string]interface{}) error {
 }
 
 func AddUserLoginTimes(mid string, times int) error {
-	return db.Model(&Users{}).Where("mid = ?", mid).Update("total_login", gorm.Expr("total_login + ?", times)).Error
+	return db.Model(&Users{}).Where("mid = ?", mid).Updates(map[string]interface{}{"total_login": gorm.Expr("total_login + ?", times), "updated_at": time.Now()}).Error
 
 }
 

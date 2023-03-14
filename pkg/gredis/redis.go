@@ -2,6 +2,7 @@ package gredis
 
 import (
 	"encoding/json"
+	"log"
 	"pp-bakcend/pkg/setting"
 	"time"
 
@@ -34,6 +35,12 @@ func Setup() error {
 		},
 	}
 
+	// test
+	conn := RedisConn.Get()
+	_, err := redis.String(conn.Do("PING"))
+	if err != nil {
+		log.Fatalf(err.Error())
+	}
 	return nil
 }
 
