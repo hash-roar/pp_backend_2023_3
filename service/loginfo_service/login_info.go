@@ -2,6 +2,7 @@ package loginfoservice
 
 import (
 	"pp-bakcend/models"
+	"time"
 )
 
 type EquipmentInfo struct {
@@ -10,10 +11,12 @@ type EquipmentInfo struct {
 }
 
 type LoginInfoObj struct {
-	Mid       string          `json:"mid"`
-	Name      string          `json:"name"`
-	Avatar    string          `json:"avatar"`
-	Equipment []EquipmentInfo `json:"equipment"`
+	Mid         string          `json:"mid"`
+	Name        string          `json:"name"`
+	Avatar      string          `json:"avatar"`
+	Equipment   []EquipmentInfo `json:"equipment"`
+	LatestLogin time.Time       `json:"latest_login"`
+	Total       int64           `json:"total"`
 }
 
 func GetAllLoginInfo() ([]LoginInfoObj, error) {
@@ -35,10 +38,12 @@ func GetAllLoginInfo() ([]LoginInfoObj, error) {
 			})
 		}
 		loginfos = append(loginfos, LoginInfoObj{
-			Mid:       user.Mid,
-			Name:      user.Name,
-			Avatar:    user.Avatar,
-			Equipment: result,
+			Mid:         user.Mid,
+			Name:        user.Name,
+			Avatar:      user.Avatar,
+			Equipment:   result,
+			LatestLogin: user.UpdatedAt,
+			Total:       user.TotalLogin,
 		})
 	}
 	return loginfos, nil

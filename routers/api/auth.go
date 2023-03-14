@@ -83,6 +83,6 @@ func BrowserLogin(c *gin.Context) {
 		logging.Error(err)
 		return
 	}
-	c.SetCookie("session-id", session, 3600*24*7, "/", "localhost", false, false)
+	c.SetCookie("session-id", session, 3600*24*7, "/", "", false, false)
 	App.Response(200, enums.SUCCESS, "")
 }

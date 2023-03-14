@@ -12,9 +12,12 @@ type Equipment struct {
 	Jct      string
 }
 
-func GetEquipmentByHostname(hostname string) (*Equipment, error) {
+func GetEquipmentByHostnameMid(mid string, hostname string) (*Equipment, error) {
 	var equipment Equipment
-	result := db.Where("hostname = ?", hostname).First(&equipment)
+	result := db.Where(&Equipment{
+		Hostname: hostname,
+		Mid:      mid,
+	}).First(&equipment)
 	if result.Error != nil {
 		if result.Error != gorm.ErrRecordNotFound {
 			return nil, result.Error
