@@ -12,7 +12,7 @@ import (
 type HandleBlockWordsForm struct {
 	Shield    string `json:"shield" binding:"required"`
 	Handle    string `json:"handle" binding:"required"`
-	Operation bool   `json:"operation" binding:"required"` // true: add or update
+	Operation bool   `json:"operation" ` // true: add or update
 }
 
 func HandleBlockWords(c *gin.Context) {
@@ -89,7 +89,7 @@ func SetWordVisibility(c *gin.Context) {
 }
 
 type UserGetBlockWordForm struct {
-	use bool
+	Use bool
 }
 
 func UserGetBlockWord(c *gin.Context) {
@@ -103,7 +103,7 @@ func UserGetBlockWord(c *gin.Context) {
 		return
 	}
 	var infos []blockwordsservice.BlockWordsInfo
-	if form.use {
+	if form.Use {
 		infos, err = blockwordsservice.GetBlockWordsWithoutRepetition(mid)
 		if err != nil {
 			logging.Error(err)

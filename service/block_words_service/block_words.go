@@ -1,6 +1,8 @@
 package blockwordsservice
 
-import "pp-bakcend/models"
+import (
+	"pp-bakcend/models"
+)
 
 func AddOrUpdate(mid string, word string, handle string) error {
 	if models.CheckBlockWordExist(mid, word) {
@@ -51,7 +53,7 @@ func GetBlockWordsWithoutRepetition(mid string) ([]BlockWordsInfo, error) {
 	if err != nil {
 		return nil, err
 	}
-	var filter map[string]BlockWordsInfo
+	filter := make(map[string]BlockWordsInfo, 0)
 	for _, uword := range user_words {
 		filter[uword.Word] = BlockWordsInfo{
 			Mid:    uword.Mid,
@@ -70,7 +72,7 @@ func GetBlockWordsWithoutRepetition(mid string) ([]BlockWordsInfo, error) {
 		}
 	}
 
-	infos := make([]BlockWordsInfo, len(filter))
+	infos := make([]BlockWordsInfo, 0)
 	for _, v := range filter {
 		infos = append(infos, v)
 	}
