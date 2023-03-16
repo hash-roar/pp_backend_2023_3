@@ -66,7 +66,7 @@ func GetAllBlockWords(c *gin.Context) {
 type SetWordVisibilityForm struct {
 	Mid     string `json:"mid" binding:"required"`
 	Shield  string `json:"shield" binding:"required"`
-	Visible bool   `json:"visible" binding:"required"`
+	Visible bool   `json:"visible"`
 }
 
 func SetWordVisibility(c *gin.Context) {
@@ -75,6 +75,12 @@ func SetWordVisibility(c *gin.Context) {
 	var err error
 	if err = c.ShouldBindJSON(&form); err != nil {
 		App.Response(200, enums.INVALID_PARAMS, "")
+		logging.Info(err)
+		return
+	}
+	err = blockwordsservice.SetWordVisibility(form.Mid, form.Shield, form.Visible)
+	if err != nil {
+		App.Response(200, enums.SERVER_ERROR, "")
 		logging.Info(err)
 		return
 	}
