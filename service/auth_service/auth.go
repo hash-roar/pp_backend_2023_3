@@ -65,7 +65,7 @@ func CheckAuthWithHostname(mid string, cryptoStr string, hostname string) bool {
 	equipment, err := models.GetEquipmentByHostnameMid(mid, hostname)
 	if err != nil {
 		logging.Error(err)
-		return false	
+		return false
 	}
 	if equipment == nil {
 		return false
