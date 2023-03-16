@@ -11,7 +11,7 @@ import (
 
 type HandleBlockWordsForm struct {
 	Shield    string `json:"shield" binding:"required"`
-	Handle    string `json:"handle" binding:"required"`
+	Handle    string `json:"handle" `
 	Operation bool   `json:"operation" ` // true: add or update
 }
 
