@@ -11,6 +11,7 @@ import (
 func InitRouter() *gin.Engine {
 	r := gin.Default()
 	r.Use(middlewares.DefaultLogger())
+	r.Use(middlewares.Cors())
 
 	r.POST("/alogin", api.AppLogin)
 	r.POST("/blogin", api.BrowserLogin)
