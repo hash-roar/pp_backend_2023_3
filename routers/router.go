@@ -5,13 +5,16 @@ import (
 	"pp-bakcend/routers/api"
 	v1 "pp-bakcend/routers/api/v1"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
 func InitRouter() *gin.Engine {
 	r := gin.Default()
 	r.Use(middlewares.DefaultLogger())
-	r.Use(middlewares.Cors())
+	conf := cors.DefaultConfig()
+	conf.AllowCredentials = true
+	r.Use(cors.New(conf))
 
 	r.POST("/alogin", api.AppLogin)
 	r.POST("/blogin", api.BrowserLogin)
