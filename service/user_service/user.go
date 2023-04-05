@@ -19,3 +19,11 @@ func CreateIfNotExist(user *models.Users) error {
 	}
 	return models.CreateUser(user)
 }
+
+func GetUserByMid(mid string) (*models.Users, error) {
+	return models.GetUserByMid(mid)
+}
+
+func SetUserSponsor(mid string, sponsor int64) error {
+	return models.SetUserSponsor(mid, sponsor)
+}

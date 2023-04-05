@@ -13,6 +13,7 @@ func InitRouter() *gin.Engine {
 	r := gin.Default()
 	r.Use(middlewares.DefaultLogger())
 	conf := cors.DefaultConfig()
+	conf.AllowAllOrigins = true
 	conf.AllowCredentials = true
 	r.Use(cors.New(conf))
 
@@ -24,6 +25,7 @@ func InitRouter() *gin.Engine {
 		netToServerRouter.POST("loginfo", v1.GetAllLoginInfo)
 		netToServerRouter.POST("shield", v1.GetAllBlockWords)
 		netToServerRouter.POST("set-visible", v1.SetWordVisibility)
+		netToServerRouter.POST("set-sponsor", v1.SetUserSponsor)
 	}
 
 	appToServerRouter := r.Group("app").Use(middlewares.JctAuth())

@@ -55,7 +55,11 @@ func AppLogin(c *gin.Context) {
 		logging.Error(err)
 		return
 	}
-	App.Response(200, enums.SUCCESS, "")
+	userinfo, _ := userservice.GetUserByMid(user.Mid)
+
+	App.Response(200, enums.SUCCESS, gin.H{
+		"sponsor": userinfo.Sponsor,
+	})
 
 }
 

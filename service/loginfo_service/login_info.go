@@ -17,6 +17,7 @@ type LoginInfoObj struct {
 	Equipment   []EquipmentInfo `json:"equipment"`
 	LatestLogin time.Time       `json:"latest_login"`
 	Total       int64           `json:"total"`
+	Sponsor     int64           `json:"sponsor"`
 }
 
 func GetAllLoginInfo() ([]LoginInfoObj, error) {
@@ -44,6 +45,7 @@ func GetAllLoginInfo() ([]LoginInfoObj, error) {
 			Equipment:   result,
 			LatestLogin: user.UpdatedAt,
 			Total:       user.TotalLogin,
+			Sponsor:     user.Sponsor,
 		})
 	}
 	return loginfos, nil

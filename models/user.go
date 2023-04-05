@@ -15,6 +15,7 @@ type Users struct {
 	Avatar     string         `json:"avatar" gorm:"avatar"`
 	TotalLogin int64          `json:"total" gorm:"total_login"`
 	Equipments pq.StringArray `gorm:"type:varchar(255)[]"`
+	Sponsor    int64          `json:"sponsor" gorm:"sponsor"`
 }
 
 func GetUserByMid(mid string) (*Users, error) {
@@ -50,6 +51,10 @@ func UpdateUserByMap(data map[string]interface{}) error {
 func AddUserLoginTimes(mid string, times int) error {
 	return db.Model(&Users{}).Where("mid = ?", mid).Updates(map[string]interface{}{"total_login": gorm.Expr("total_login + ?", times), "updated_at": time.Now()}).Error
 
+}
+
+func SetUserSponsor(mid string, sponsor int64) error {
+	return db.Model(&Users{}).Where("mid = ?", mid).Updates(map[string]interface{}{"sponsor": sponsor, "updated_at": time.Now()}).Error
 }
 
 func GetAllUser() ([]Users, error) {
