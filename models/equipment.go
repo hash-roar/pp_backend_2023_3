@@ -37,6 +37,10 @@ func UpdateEquipmentJct(hostname string, newJct string) error {
 	return db.Model(&Equipment{}).Where("hostname = ?", hostname).UpdateColumn("jct", newJct).Error
 }
 
+func UpdateEquipment(where *Equipment, new *Equipment) error {
+	return db.Model(where).Updates(new).Error
+}
+
 func GetAllEquipmentsByMid(mid string) ([]Equipment, error) {
 	var equipments []Equipment
 	result := db.Where("mid = ?", mid).Find(&equipments)

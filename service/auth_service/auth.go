@@ -41,7 +41,13 @@ func CheckAuth(mid string, hostname string, jct string, encryptStr string, versi
 	}
 
 	// update
-	err = models.UpdateEquipmentJct(hostname, jct)
+	err = models.UpdateEquipment(&models.Equipment{
+		Mid:      mid,
+		Hostname: hostname,
+	}, &models.Equipment{
+		Version: version,
+		Jct:     jct,
+	})
 	if err != nil {
 		logging.Error(err)
 		return false
