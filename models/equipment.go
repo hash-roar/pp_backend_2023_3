@@ -33,8 +33,8 @@ func CreateEquipment(e *Equipment) error {
 	return db.Create(e).Error
 }
 
-func UpdateEquipmentJctVersion(hostname string, newJct string, version string) error {
-	return db.Model(&Equipment{}).Where("hostname = ?", hostname).Updates(&Equipment{
+func UpdateEquipmentJctVersion(hostname string, mid string, newJct string, version string) error {
+	return db.Model(&Equipment{}).Where("hostname = ? AND mid = ?", hostname, mid).Updates(&Equipment{
 		Version: version,
 		Jct:     newJct,
 	}).Error
